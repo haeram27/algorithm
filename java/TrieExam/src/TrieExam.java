@@ -12,14 +12,6 @@ class TrieNode {
      * End Of a Word
      */
     boolean isEndOfWord;
-    
-/*  Constructor can be omitted
-    TrieNode() {
-        isEndOfWord = false;
-        for (int i = 0; i < ALPHABET_SIZE; ++i)
-            children[i] = null;
-    }
-*/
 };
 
 public class TrieExam {
@@ -36,7 +28,6 @@ public class TrieExam {
         
         int len = key.length();
         TrieNode node = _root;
-
 
         for (int level = 0; level < len; ++level) {
             int idx = key.charAt(level) - 'a';
