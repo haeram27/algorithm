@@ -69,7 +69,7 @@ public class TrieExam {
     // Driver
     public static void main(String args[]) {
         // Input keys (use only 'a' through 'z' and lower case)
-        String keys[] = { "this", "these", "there", "apple", "apply", "appoint"};
+        String keys[] = { "this", "these", "there", "apple", "appoint"};
         String output[] = { "Not present in trie", "Present in trie" };
 
         _root = new TrieNode();
@@ -89,14 +89,14 @@ public class TrieExam {
         else
             System.out.println("those --- " + output[0]);
 
+        if (search("apple") == true)
+            System.out.println("apple --- " + output[1]);
+        else
+            System.out.println("apple --- " + output[0]);
+
         if (search("apply") == true)
             System.out.println("apply --- " + output[1]);
         else
             System.out.println("apply --- " + output[0]);
-
-        if (search("applicant") == true)
-            System.out.println("applicant --- " + output[1]);
-        else
-            System.out.println("applicant --- " + output[0]);
     }
 }
