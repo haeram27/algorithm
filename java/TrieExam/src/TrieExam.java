@@ -13,11 +13,13 @@ class TrieNode {
      */
     boolean isEndOfWord;
     
+/*  Constructor can be omitted
     TrieNode() {
         isEndOfWord = false;
         for (int i = 0; i < ALPHABET_SIZE; ++i)
             children[i] = null;
     }
+*/
 };
 
 public class TrieExam {
@@ -29,11 +31,12 @@ public class TrieExam {
     // If the key is prefix of trie node,
     // just marks leaf node
     static void insert(String key) {
+        if (key == null || key.isEmpty())
+            return;
+        
         int len = key.length();
         TrieNode node = _root;
 
-        if (key == null || len == 0)
-            return;
 
         for (int level = 0; level < len; ++level) {
             int idx = key.charAt(level) - 'a';
@@ -49,11 +52,11 @@ public class TrieExam {
 
     // Returns true if key presents in trie, else false
     static boolean search(String key) {
+        if (key == null || key.isEmpty())
+            return false;
+
         int len = key.length();
         TrieNode node = _root;
-
-        if (key == null || key.length() == 0)
-            return false;
 
         for (int level = 0; level < len; ++level) {
             int idx = key.charAt(level) - 'a';
