@@ -1,30 +1,36 @@
-// Java implementation of search and insert operations 
-// on Trie 
-public class TrieExam {
+// search and insert operations on Trie Data Structure
+
+class TrieNode {
     // Alphabet size (# of symbols)
     static final int ALPHABET_SIZE = 26;
+    
+    /** link to children TrieNode */
+    TrieNode[] children = new TrieNode[ALPHABET_SIZE];
+
+    /** 
+     * isEndOfWord is true if the node represents
+     * End Of a Word
+     */
+    boolean isEndOfWord;
+    
+    TrieNode() {
+        isEndOfWord = false;
+        for (int i = 0; i < ALPHABET_SIZE; ++i)
+            children[i] = null;
+    }
+};
+
+public class TrieExam {
     static TrieNode _root;
 
     // trie node
-    static class TrieNode {
-        TrieNode[] children = new TrieNode[ALPHABET_SIZE];
 
-        // isEndOfWord is true if the node represents
-        // end of a word
-        boolean isEndOfWord;
-        TrieNode() {
-            isEndOfWord = false;
-            for (int i = 0; i < ALPHABET_SIZE; i++)
-                children[i] = null;
-        }
-    };
-
-// If not present, inserts key into trie
+    // If not present, inserts key into trie
     // If the key is prefix of trie node,
     // just marks leaf node
     static void insert(String key) {
-        TrieNode node = _root;
         int len = key.length();
+        TrieNode node = _root;
 
         if (key == null || len == 0)
             return;
@@ -36,6 +42,7 @@ public class TrieExam {
             }
             node = node.children[idx];
         }
+        
         // mark last node as leaf
         node.isEndOfWord = true;
     }
@@ -55,14 +62,16 @@ public class TrieExam {
             }
             node = node.children[idx];
         }
+        
         return node.isEndOfWord;
     }
 
     // Driver
     public static void main(String args[]) {
         // Input keys (use only 'a' through 'z' and lower case)
-        String keys[] = { "the", "a", "there", "answer", "any", "by", "bye", "their" };
+        String keys[] = { "this", "these", "there", "apple", "apply", "appoint"};
         String output[] = { "Not present in trie", "Present in trie" };
+
         _root = new TrieNode();
 
         // Construct trie
@@ -70,24 +79,24 @@ public class TrieExam {
             insert(keys[i]);
 
         // Search for different keys
-        if (search("the") == true)
-            System.out.println("the --- " + output[1]);
-        else
-            System.out.println("the --- " + output[0]);
-
         if (search("these") == true)
             System.out.println("these --- " + output[1]);
         else
             System.out.println("these --- " + output[0]);
 
-        if (search("their") == true)
-            System.out.println("their --- " + output[1]);
+        if (search("those") == true)
+            System.out.println("those --- " + output[1]);
         else
-            System.out.println("their --- " + output[0]);
+            System.out.println("those --- " + output[0]);
 
-        if (search("thaw") == true)
-            System.out.println("thaw --- " + output[1]);
+        if (search("apply") == true)
+            System.out.println("apply --- " + output[1]);
         else
-            System.out.println("thaw --- " + output[0]);
+            System.out.println("apply --- " + output[0]);
+
+        if (search("applicant") == true)
+            System.out.println("applicant --- " + output[1]);
+        else
+            System.out.println("applicant --- " + output[0]);
     }
 }
