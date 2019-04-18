@@ -56,7 +56,7 @@ public class ArrayTestExam {
 
     /**
      * flip row of matrix(two-dimensional array)
-     * 위아래 뒤집기
+     * exchange top and bottom rows
      *         cols
      *        1  2  3         7  8  9    
      *  rows  4  5  6   >>>   4  5  6
@@ -78,7 +78,7 @@ public class ArrayTestExam {
 
     /**
      * flip cols of NxM matrix(two-dimensional array)
-     * 좌우 뒤집기
+     * exchange left and right columns
      *         cols
      *        1  2  3         3  2  1    
      *  rows  4  5  6   >>>   6  5  4
@@ -100,7 +100,7 @@ public class ArrayTestExam {
 
     /**
      * clockwise rotate of NxN matrix(two-dimensional array)
-     * NxN 매트릭스 시계 방향으로 돌리기
+     * rotate NxN array as clockwise direction
      *         cols
      *        1  2  3         7  4  1    
      *  rows  4  5  6   >>>   8  5  2
@@ -112,7 +112,7 @@ public class ArrayTestExam {
         int[][] rotated = new int[len][len];
         for (int row = 0; row < len; ++row) {
             for (int col = 0; col < len; ++col) {
-                // insert: b[row][col] = a[max_index-col][row];
+                // insert: r[row][col] = m[max_index-col][row];
                 rotated[row][col] = matrix[len - 1 - col][row];
             }
         }
@@ -121,7 +121,7 @@ public class ArrayTestExam {
 
     /**
      * reverse-clockwise rotate of NxN matrix(two-dimensional array)
-     * NxN 매트릭스 반 시계 방향으로 돌리기
+     * rotate NxN array as revserse-clockwise direction
      *         cols
      *        1  2  3         3  6  9    
      *  rows  4  5  6   >>>   2  5  8
@@ -133,7 +133,7 @@ public class ArrayTestExam {
         int[][] rotated = new int[len][len];
         for (int row = 0; row < len; ++row) {
             for (int col = 0; col < len; ++col) {
-                // insert: b[row][col] = a[col][max_index-row];
+                // insert: r[row][col] = m[col][max_index-row];
                 rotated[row][col] = matrix[col][len - 1 - row];
             }
         }
